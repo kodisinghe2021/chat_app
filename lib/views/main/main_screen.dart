@@ -1,5 +1,7 @@
+
+
 import 'package:chat_app/views/common/components/custom_buttons.dart';
-import 'package:chat_app/views/common/text/custom_text.dart';
+import 'package:chat_app/views/common/components/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -29,8 +31,14 @@ class _MainScreenState extends State<MainScreen> {
             SizedBox(
               width: 300,
               child: CustomButton(
+                onTap: () {},
                 text: 'Login',
               ),
+            ),
+            const SizedBox(height: 40),
+            Container(
+              
+              child: const Icon(Icons.back_hand),
             ),
           ],
         ),

@@ -1,45 +1,42 @@
-
 import 'package:chat_app/utils/app_colours.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomButton extends StatelessWidget {
-  CustomButton({
-    this.height = 50,
+  const CustomButton({
+    required this.onTap,
     required this.text,
+    this.height = 50,
+    this.isLoading = false,
     Key? key,
   }) : super(key: key);
-  double height;
-  String text;
+  final double height;
+  final String text;
+  final Function() onTap;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Align(
           alignment: Alignment.bottomRight,
-          child: Container(
-            width: double.infinity,
-            height: height,
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.8),
-                  spreadRadius: 1,
-                  blurRadius: 10,
-                  offset: const Offset(0, 3), // changes position of shadow
-                ),
-              ],
-              color: const Color(0xFF293462),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
-              child: Text(
-                text,
-                style: GoogleFonts.dangrek(
-                  fontSize: 20,
-                  color: kWhite,
-                  letterSpacing: 2.5,
-                ),
+          child: GestureDetector(
+            onTap: onTap,
+            child: Container(
+              width: double.infinity,
+              height: height + 3,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.8),
+                    spreadRadius: 1,
+                    blurRadius: 10,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+                color: const Color(0xFF293462),
+                borderRadius: BorderRadius.circular(10),
               ),
             ),
           ),
@@ -47,7 +44,7 @@ class CustomButton extends StatelessWidget {
         Container(
           width: double.infinity,
           margin: const EdgeInsets.only(right: 3),
-          height: 60,
+          height: height,
           decoration: BoxDecoration(
             gradient: const LinearGradient(
               begin: Alignment.topLeft,
@@ -62,14 +59,18 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Center(
-            child: Text(
-              'Login',
-              style: GoogleFonts.dangrek(
-                fontSize: 20,
-                color: kWhite,
-                letterSpacing: 2.5,
-              ),
-            ),
+            child: isLoading
+                ? const SpinKitThreeInOut(
+                    color: kWhite,
+                  )
+                : Text(
+                    'Login',
+                    style: GoogleFonts.dangrek(
+                      fontSize: 20,
+                      color: kWhite,
+                      letterSpacing: 2.5,
+                    ),
+                  ),
           ),
         ),
       ],

@@ -1,9 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:chat_app/utils/app_colours.dart';
-import 'package:chat_app/views/common/text/custom_text.dart';
+import 'package:chat_app/views/common/components/custom_text.dart';
 import 'package:chat_app/views/main/main_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -45,11 +44,10 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.chat_outlined,
-                        size: 70, color: kPrimeryYellow),
-                    const SizedBox(height: 30),
-                   HeaderText(text: 'chat App'),
+                  children: const [
+                    Icon(Icons.chat_outlined, size: 70, color: kPrimeryYellow),
+                    SizedBox(height: 30),
+                    HeaderText(text: 'chat App'),
                   ],
                 ),
               ),
