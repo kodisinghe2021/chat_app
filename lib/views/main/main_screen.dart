@@ -1,7 +1,6 @@
-
-
-import 'package:chat_app/views/common/components/custom_buttons.dart';
-import 'package:chat_app/views/common/components/custom_text.dart';
+import 'package:chat_app/utils/app_colours.dart';
+import 'package:chat_app/views/main/chat/chat.dart';
+import 'package:chat_app/views/main/home/home.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -12,37 +11,54 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+   int _currentIndex = 0;
+  final List<Widget> _screens = [
+    const Home(),
+    const Chat(),
+  ];
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      body: SizedBox(
-        width: screenSize.width,
-        height: screenSize.height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            HeaderText(
-              text: 'MainScreen',
-              fsize: 50,
+      body: IndexedStack(
+        index: _currentIndex,
+        children: _screens,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: kWhite,
+        elevation: 0,
+        selectedItemColor: Colors.blueAccent,
+        unselectedItemColor: Colors.amber,
+        currentIndex: _currentIndex,
+        onTap: (index) => setState(() {
+          _currentIndex = index;
+        }),
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              size: 20,
             ),
-            const SizedBox(height: 40),
-            SizedBox(
-              width: 300,
-              child: CustomButton(
-                onTap: () {},
-                text: 'Login',
-              ),
+            label: 'Home',
+            activeIcon: Icon(
+              Icons.home,
+              size: 30,
             ),
-            const SizedBox(height: 40),
-            Container(
-              
-              child: const Icon(Icons.back_hand),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.chat,
+              size: 20,
             ),
-          ],
-        ),
+            label: 'Chat',
+            activeIcon: Icon(
+              Icons.chat,
+              size: 30,
+            ),
+          ),
+        ],
       ),
     );
   }
+  
 }

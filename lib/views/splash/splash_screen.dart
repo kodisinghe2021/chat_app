@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:chat_app/utils/app_colours.dart';
-import 'package:chat_app/views/common/components/custom_text.dart';
+import 'package:chat_app/components/custom_text.dart';
 import 'package:chat_app/views/main/main_screen.dart';
 import 'package:flutter/material.dart';
 

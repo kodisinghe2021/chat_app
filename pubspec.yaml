@@ -39,6 +39,12 @@ dependencies:
   animate_do: ^2.1.0
   #loaderKit
   flutter_spinkit: ^5.1.0
+  #svg type
+  flutter_svg: ^1.1.5
+  #image Loader
+  skeletons: ^0.0.3
+  #cool Alert
+  cool_alert: ^1.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
